@@ -11,7 +11,7 @@ bool process_arguments(int _argc, wchar_t* _argv[], wstring& _pdb_file) {
 
     for (int i = 1; i < _argc; ++i) {
         wstring arg = _argv[i];
-        if (arg == L"-ssid" || arg == L"--symbol-store-id") {
+        if (arg == L"-ssid" || arg == L"--symstore-id") {
             print_symstore_id = true;
         } else {
             _pdb_file = arg;  // Assuming the PDB file is the only non-option argument
@@ -25,14 +25,14 @@ int wmain(int _argc, wchar_t* _argv[]) {
     auto pdb_file          = wstring{};
     auto print_symstore_id = process_arguments(_argc, _argv, pdb_file);
     if (pdb_file.empty()) {
-        wcerr << L"Usage: " << _argv[0] << L" <pdb-file> [-ssid | --symbol-store-id]\n"
+        wcerr << L"Usage: " << _argv[0] << L" <pdb-file> [-ssid | --symstore-id]\n"
               << L"\n"
-              << L"  pdb-file                   path to the PDB file\n"
-              << L"  -ssid, --symbol-store-id   print a SymStore-compatible ID\n"
+              << L"  pdb-file               path to the PDB file\n"
+              << L"  -ssid, --symstore-id   print a SymStore-compatible ID\n"
               << L"\n"
               << L"Remarks:\n"
-              << L"  The program prints the GUID of the PDB file. If the -ssid or --symbol-store-id\n"
-              << L"  option is given, it prints a SymbolStore-compatible ID instead.\n"
+              << L"  The program prints the GUID of the PDB file. If the -ssid or --symstore-id\n"
+              << L"  option is given, it prints a SymStore-compatible ID instead.\n"
               << L"  If the program fails, it does not print anything and returns -1.\n";
         return -1;
     }
