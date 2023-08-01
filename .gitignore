@@ -26,7 +26,12 @@
 *.a
 *.lib
 
-# Executables
+# Executable and intermediate related
 *.exe
 *.out
 *.app
+
+.build/
+.tmp/
+.out
+.premake-utils-dropbox.lua
